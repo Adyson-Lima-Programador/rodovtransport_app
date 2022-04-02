@@ -1,4 +1,4 @@
-# Aplicativo em Flutter rodovtransport_app integrado a API REST <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a>
+# Aplicativo em Flutter rodovtransport_app integrado a API REST <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a> e ao <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_web">frontend Angular</a>
 
 # Autor
 
