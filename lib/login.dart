@@ -15,6 +15,9 @@ class Login extends StatelessWidget {
 _login() {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
+    theme: ThemeData.dark().copyWith(
+      primaryColor: Color(0xffffbd59),
+    ),
     home: LoginHome(),
   );
 }
@@ -42,6 +45,8 @@ class _LoginHomeState extends State<LoginHome> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('RodovTransport'),
+        backgroundColor: Color(0xffffbd59),
+        foregroundColor: Color(0xff424242),
       ),
       body: Form(
         child: Center(
@@ -49,28 +54,50 @@ class _LoginHomeState extends State<LoginHome> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
+                  cursorColor: Color(0xffffbd59),
                   controller: email,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Email'
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                      color: Color(0xffffbd59),
+                    )),
+                    labelText: 'Email',
+                    labelStyle: TextStyle(
+                      color: Color(0xffffbd59),
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
+                  cursorColor: Color(0xffffbd59),
                   controller: password,
+                  obscureText: true,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Senha'
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                      color: Color(0xffffbd59),
+                    )),
+                    labelText: 'Senha',
+                    labelStyle: TextStyle(
+                      color: Color(0xffffbd59),
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xffffbd59),
+                    onPrimary: Color(0xff424242),
+                  ),
                   child: const Text('Entrar'),
                   onPressed: () => {
                     if (email.text.trim() == "admin@admin.com" &&
@@ -91,6 +118,7 @@ class _LoginHomeState extends State<LoginHome> {
       ),
     );
   }
+
   bool manipulaDadosDoForm(nome, password) {
     showDialog(
         context: context,
@@ -103,5 +131,3 @@ class _LoginHomeState extends State<LoginHome> {
     return true;
   }
 }
-
-
