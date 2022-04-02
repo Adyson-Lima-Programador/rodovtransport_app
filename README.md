@@ -13,7 +13,7 @@ Adyson Lima
 Este aplicativo é desenvolvido em **Flutter** e é parte de uma aplicação FullStack para gerenciamento de cargas para transportadoras rodoviárias.
 
 # Layout mobile Flutter
-![]()
+<img src="https://github.com/Adyson-Lima-Programador/rodovtransport_app/blob/main/imagens/Screenshot_20220401_225027.png" width="250px"/>
 
 # Tecnologias utilizadas
 
