@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:rodovtransport_app/model/servico_autenticacao/autenticacao_service.dart';
 
-void main() => runApp(Login());
+void main() => runApp(const Login());
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -16,9 +17,9 @@ _login() {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData.dark().copyWith(
-      primaryColor: Color(0xffffbd59),
+      primaryColor: const Color(0xffffbd59),
     ),
-    home: LoginHome(),
+    home: const LoginHome(),
   );
 }
 
@@ -45,8 +46,8 @@ class _LoginHomeState extends State<LoginHome> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('RodovTransport'),
-        backgroundColor: Color(0xffffbd59),
-        foregroundColor: Color(0xff424242),
+        backgroundColor: const Color(0xffffbd59),
+        foregroundColor: const Color(0xff424242),
       ),
       body: Form(
         child: Center(
@@ -57,7 +58,7 @@ class _LoginHomeState extends State<LoginHome> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
-                  cursorColor: Color(0xffffbd59),
+                  cursorColor: const Color(0xffffbd59),
                   controller: email,
                   decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -75,7 +76,7 @@ class _LoginHomeState extends State<LoginHome> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
-                  cursorColor: Color(0xffffbd59),
+                  cursorColor: const Color(0xffffbd59),
                   controller: password,
                   obscureText: true,
                   decoration: const InputDecoration(
@@ -95,21 +96,12 @@ class _LoginHomeState extends State<LoginHome> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xffffbd59),
-                    onPrimary: Color(0xff424242),
+                    primary: const Color(0xffffbd59),
+                    onPrimary: const Color(0xff424242),
                   ),
                   child: const Text('Entrar'),
-                  onPressed: () => {
-                    if (email.text.trim() == "admin@admin.com" &&
-                        password.text.trim() == "123")
-                      {
-                        manipulaDadosDoForm(email.text, password.text)
-                        // Navigator.pushNamed(
-                        //   context,
-                        //   '/list',
-                        // )
-                      },
-                  },
+                  onPressed: () =>
+                      {logar(email.text.trim(), password.text.trim())},
                 ),
               )
             ],
@@ -119,15 +111,28 @@ class _LoginHomeState extends State<LoginHome> {
     );
   }
 
-  bool manipulaDadosDoForm(nome, password) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text('Nome: ' + nome + '\n' + 'Senha: ' + password),
-          );
-        });
-    debugPrintSynchronously('O nome é: $nome e a senha é: $password');
-    return true;
+  void logar(email, password) async {
+
+    var autenticacaoService = AutenticacaoService();
+    await autenticacaoService.loginJWT(email, password);
+
+    if (autenticacaoService.categoria == '1') {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('Bem vindo administrador!'),
+            );
+          });
+    }
+    if (autenticacaoService.categoria == '2') {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('Bem vindo cliente!'),
+            );
+          });
+    }
   }
 }
