@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/servico_autenticacao/autenticacao_service.dart';
+import 'package:rodovtransport_app/routes.dart';
+import 'package:rodovtransport_app/view/pacotes_cliente_list.dart';
 
 void main() => runApp(const Login());
 
@@ -19,7 +21,14 @@ _login() {
     theme: ThemeData.dark().copyWith(
       primaryColor: const Color(0xffffbd59),
     ),
-    home: const LoginHome(),
+    initialRoute: Routes.root,
+    routes: {
+      Routes.root: (context) => const LoginHome(),
+      Routes.pacotes_cliente: (context) => const PacotesCliente(),
+      // Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
+
+    },
+    // home: const LoginHome(),
   );
 }
 
@@ -126,13 +135,7 @@ class _LoginHomeState extends State<LoginHome> {
           });
     }
     if (autenticacaoService.categoria == '2') {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text('Bem vindo cliente!'),
-            );
-          });
+      Navigator.pushNamed(context,'/pacotes_cliente');
     }
   }
 }
