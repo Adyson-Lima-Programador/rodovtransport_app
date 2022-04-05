@@ -26,7 +26,6 @@ _login() {
       Routes.root: (context) => const LoginHome(),
       Routes.pacotes_cliente: (context) => const PacotesCliente(),
       // Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
-
     },
     // home: const LoginHome(),
   );
@@ -121,7 +120,6 @@ class _LoginHomeState extends State<LoginHome> {
   }
 
   void logar(email, password) async {
-
     var autenticacaoService = AutenticacaoService();
     await autenticacaoService.loginJWT(email, password);
 
@@ -135,7 +133,11 @@ class _LoginHomeState extends State<LoginHome> {
           });
     }
     if (autenticacaoService.categoria == '2') {
-      Navigator.pushNamed(context,'/pacotes_cliente');
+      Navigator.pushNamed(
+        context,
+        '/pacotes_cliente',
+        arguments: {autenticacaoService.email_usuario},
+      );
     }
   }
 }

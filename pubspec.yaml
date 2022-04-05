@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.4 # Acesso para API's
+  intl: ^0.17.0 # Formatação de datas e moedas
 
 
   # The following adds the Cupertino Icons font to your application.

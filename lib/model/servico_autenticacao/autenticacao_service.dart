@@ -6,6 +6,7 @@ class AutenticacaoService {
   var token = '';
   var erro_usuario = '';
   var erro_senha = '';
+  var email_usuario = '';
 
   Future<bool> loginJWT(String email, String password) async {
     // Padrão de url para produção
@@ -22,6 +23,7 @@ class AutenticacaoService {
     token = response.body.substring(26, response.body.length - 2);
     erro_usuario = response.body.substring(9, response.body.length - 2);
     erro_senha = response.body.substring(9, response.body.length - 2);
+    email_usuario = email;
 
     return true;
   }
