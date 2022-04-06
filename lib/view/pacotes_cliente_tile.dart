@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
-import 'package:intl/intl.dart';
 
 class PacotesClienteTile extends StatelessWidget {
   final Pacote pacote;

@@ -23,8 +23,7 @@ class _PacotesClienteState extends State<PacotesCliente> {
   Widget build(BuildContext context) {
     var email_usuario_logado =
         ModalRoute.of(context)!.settings.arguments.toString();
-    var email =
-        email_usuario_logado.substring(1, email_usuario_logado.length - 1);
+    var email = email_usuario_logado.substring(1, email_usuario_logado.length - 1);
     future = PacotesService.buscarPorEmail(email);
 
     return MaterialApp(

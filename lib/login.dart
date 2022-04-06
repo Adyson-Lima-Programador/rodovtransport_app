@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/servico_autenticacao/autenticacao_service.dart';
 import 'package:rodovtransport_app/routes.dart';
 import 'package:rodovtransport_app/view/pacotes_cliente_list.dart';
+import 'package:rodovtransport_app/view/pacotes_empresa_list.dart';
 
 void main() => runApp(const Login());
 
@@ -25,7 +26,7 @@ _login() {
     routes: {
       Routes.root: (context) => const LoginHome(),
       Routes.pacotes_cliente: (context) => const PacotesCliente(),
-      // Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
+      Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
     },
     // home: const LoginHome(),
   );
