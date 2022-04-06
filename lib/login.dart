@@ -124,13 +124,10 @@ class _LoginHomeState extends State<LoginHome> {
     await autenticacaoService.loginJWT(email, password);
 
     if (autenticacaoService.categoria == '1') {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text('Bem vindo administrador!'),
-            );
-          });
+      Navigator.pushNamed(
+        context,
+        '/pacotes_empresa',
+      );
     }
     if (autenticacaoService.categoria == '2') {
       Navigator.pushNamed(

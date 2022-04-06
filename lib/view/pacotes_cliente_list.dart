@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
-import 'package:rodovtransport_app/view/PacotesClienteTile.dart';
+import 'package:rodovtransport_app/view/pacotes_cliente_tile.dart';
 
 class PacotesCliente extends StatefulWidget {
   const PacotesCliente({Key? key}) : super(key: key);
