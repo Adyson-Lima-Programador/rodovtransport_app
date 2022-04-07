@@ -21,12 +21,12 @@ class PacotesEmpresaTile extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                onPressed: () => {},
+                onPressed: () => {_editar(context)},
                 icon: Icon(Icons.edit),
                 color: const Color(0xffffbd59),
               ),
               IconButton(
-                onPressed: () => {},
+                onPressed: () => {_excluir(context)},
                 icon: Icon(Icons.delete),
                 color: Colors.red,
               )
@@ -35,5 +35,25 @@ class PacotesEmpresaTile extends StatelessWidget {
         ),
       ),
     );
+  }
+  
+  _editar(context){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Editar'),
+          );
+        });
+  }
+
+  _excluir(context){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Excluir'),
+          );
+        });
   }
 }

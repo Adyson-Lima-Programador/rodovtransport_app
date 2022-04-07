@@ -21,7 +21,6 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
 
   @override
   Widget build(BuildContext context) {
-
     future = PacotesService.buscarTodos();
 
     return MaterialApp(
@@ -31,13 +30,21 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Pacotes Empresa"),
+          title: const Text("Pacotes"),
           backgroundColor: const Color(0xffffbd59),
           foregroundColor: const Color(0xff424242),
           actions: [
             IconButton(
-              onPressed: () => {},
-              icon: Icon(Icons.add),
+              onPressed: () => {_retornar()},
+              icon: Icon(Icons.arrow_circle_left_outlined),
+            ),
+            IconButton(
+              onPressed: () => {_proximo()},
+              icon: Icon(Icons.arrow_circle_right_outlined),
+            ),
+            IconButton(
+              onPressed: () => {_novoPacote()},
+              icon: Icon(Icons.add_circle_outline_outlined),
             )
           ],
         ),
@@ -66,5 +73,35 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
         ),
       ),
     );
+  }
+
+  _retornar() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Lista anterior'),
+          );
+        });
+  }
+
+  _proximo() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Próxima lista'),
+          );
+        });
+  }
+
+  _novoPacote() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Novo pacote'),
+          );
+        });
   }
 }
