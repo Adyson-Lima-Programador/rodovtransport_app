@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
@@ -12,7 +14,10 @@ class PacotesEmpresa extends StatefulWidget {
 }
 
 class _PacotesEmpresaState extends State<PacotesEmpresa> {
+  int paginaAtual = 1;
   late Future<List<Pacote>> future;
+  List<Pacote>? pacotes;
+  GlobalKey globalKey = GlobalKey();
 
   @override
   void initState() {
@@ -21,7 +26,11 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
 
   @override
   Widget build(BuildContext context) {
-    future = PacotesService.buscarTodos();
+    // Só preenche future com método buscarTodos() no primeiro acesso,
+    // depois preenche com método navegarPagina()
+    if (paginaAtual == 1) {
+      future = PacotesService.buscarTodos();
+    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -35,11 +44,11 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
           foregroundColor: const Color(0xff424242),
           actions: [
             IconButton(
-              onPressed: () => {_retornar()},
+              onPressed: () => {_paginaAnterior()},
               icon: Icon(Icons.arrow_circle_left_outlined),
             ),
             IconButton(
-              onPressed: () => {_proximo()},
+              onPressed: () => {_proximaPagina()},
               icon: Icon(Icons.arrow_circle_right_outlined),
             ),
             IconButton(
@@ -48,26 +57,30 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
             )
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: FutureBuilder<List<Pacote>>(
-              future: future,
-              builder: (context, snapshot) {
-                List<Pacote>? pacotes = snapshot.data;
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount: pacotes!.length,
-                    itemBuilder: (context, i) =>
-                        PacotesEmpresaTile(pacotes.elementAt(i)),
+        body: RefreshIndicator(
+          onRefresh: _proximaPagina,
+          key: globalKey,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: FutureBuilder<List<Pacote>>(
+                future: future,
+                builder: (context, snapshot) {
+                  pacotes = snapshot.data;
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      itemCount: pacotes!.length,
+                      itemBuilder: (context, i) =>
+                          PacotesEmpresaTile(pacotes!.elementAt(i)),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('Não foi possivel buscar os pacotes!');
+                  }
+                  return const CircularProgressIndicator(
+                    color: Color(0xffffbd59),
                   );
-                } else if (snapshot.hasError) {
-                  return Text('Não foi possivel buscar os pacotes!');
-                }
-                return const CircularProgressIndicator(
-                  color: Color(0xffffbd59),
-                );
-              },
+                },
+              ),
             ),
           ),
         ),
@@ -75,24 +88,28 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
     );
   }
 
-  _retornar() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text('Lista anterior'),
-          );
-        });
+  Future<void> _paginaAnterior() async {
+    if (mounted) {
+      globalKey = GlobalKey();
+      setState(() {
+        if (paginaAtual > 1) {
+          paginaAtual -= 1;
+          future = PacotesService.navegarPagina(paginaAtual);
+        }
+      });
+    }
   }
 
-  _proximo() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text('Próxima lista'),
-          );
-        });
+  Future<void> _proximaPagina() async {
+    if (mounted) {
+      globalKey = GlobalKey();
+      setState(() {
+        if (paginaAtual < 15) {
+          paginaAtual += 1;
+          future = PacotesService.navegarPagina(paginaAtual);
+        }
+      });
+    }
   }
 
   _novoPacote() {
