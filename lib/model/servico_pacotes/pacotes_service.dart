@@ -76,4 +76,19 @@ class PacotesService {
 
     return pacotes;
   }
+
+  Future<bool> novo(String content, String status, String user_id) async {
+    // Padrão de url para produção
+    // var url = Uri.parse("http://localhost:3000/api/v2/packages");
+
+    // Endereço IP deve ser verificado a cada inicialização do PC
+    var url = Uri(
+        scheme: 'http', host: '10.0.0.156', port: 3000, path: '/api/v2/packages');
+    final Map params = {'content': content, 'status': status, 'user_id': user_id};
+
+    var response = await http.post(url, body: params);
+
+    return true;
+  }
+
 }

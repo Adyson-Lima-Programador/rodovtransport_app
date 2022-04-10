@@ -1,53 +1,45 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rodovtransport_app/model/servico_autenticacao/autenticacao_service.dart';
+import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
 import 'package:rodovtransport_app/routes.dart';
-import 'package:rodovtransport_app/view/pacotes_cliente_list.dart';
 import 'package:rodovtransport_app/view/pacotes_empresa_list.dart';
-import 'package:rodovtransport_app/view/pacotes_novo.dart';
 
-void main() => runApp(const Login());
+void main() => runApp(const PacotesNovo());
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class PacotesNovo extends StatelessWidget {
+  const PacotesNovo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _login();
+    return _novo_pacote();
+  }
+
+  _novo_pacote() {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: const Color(0xffffbd59),
+      ),
+    );
   }
 }
 
-_login() {
-  return MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData.dark().copyWith(
-      primaryColor: const Color(0xffffbd59),
-    ),
-    initialRoute: Routes.root,
-    routes: {
-      Routes.root: (context) => const LoginHome(),
-      Routes.pacotes_cliente: (context) => const PacotesCliente(),
-      Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
-      Routes.pacotes_novo: (context) => const PacotesNovo(),
-    },
-  );
-}
-
-class LoginHome extends StatefulWidget {
-  const LoginHome({Key? key}) : super(key: key);
+class NovoPacote extends StatefulWidget {
+  const NovoPacote({Key? key}) : super(key: key);
 
   @override
-  State<LoginHome> createState() => _LoginHomeState();
+  State<NovoPacote> createState() => _NovoPacoteState();
 }
 
-class _LoginHomeState extends State<LoginHome> {
-  final email = TextEditingController();
-  final password = TextEditingController();
+class _NovoPacoteState extends State<NovoPacote> {
+  final content = TextEditingController();
+  final status = TextEditingController();
+  final user_id = TextEditingController();
 
   @override
   void dispose() {
-    email.dispose();
-    password.dispose();
+    content.dispose();
+    status.dispose();
+    user_id.dispose();
     super.dispose();
   }
 
@@ -55,7 +47,7 @@ class _LoginHomeState extends State<LoginHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RodovTransport'),
+        title: const Text('Novo Pacote'),
         backgroundColor: const Color(0xffffbd59),
         foregroundColor: const Color(0xff424242),
       ),
@@ -69,13 +61,13 @@ class _LoginHomeState extends State<LoginHome> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
                   cursorColor: const Color(0xffffbd59),
-                  controller: email,
+                  controller: content,
                   decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                       color: Color(0xffffbd59),
                     )),
-                    labelText: 'Email',
+                    labelText: 'Descrição',
                     labelStyle: TextStyle(
                       color: Color(0xffffbd59),
                     ),
@@ -87,14 +79,31 @@ class _LoginHomeState extends State<LoginHome> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
                   cursorColor: const Color(0xffffbd59),
-                  controller: password,
-                  obscureText: true,
+                  controller: status,
                   decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                       color: Color(0xffffbd59),
                     )),
-                    labelText: 'Senha',
+                    labelText: 'Status',
+                    labelStyle: TextStyle(
+                      color: Color(0xffffbd59),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: TextFormField(
+                  cursorColor: const Color(0xffffbd59),
+                  controller: user_id,
+                  decoration: const InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                      color: Color(0xffffbd59),
+                    )),
+                    labelText: 'Código do usuário',
                     labelStyle: TextStyle(
                       color: Color(0xffffbd59),
                     ),
@@ -109,9 +118,11 @@ class _LoginHomeState extends State<LoginHome> {
                     primary: const Color(0xffffbd59),
                     onPrimary: const Color(0xff424242),
                   ),
-                  child: const Text('Entrar'),
-                  onPressed: () =>
-                      {logar(email.text.trim(), password.text.trim())},
+                  child: const Text('Salvar'),
+                  onPressed: () => {
+                    salvar(content.text.trim(), status.text.trim(),
+                        user_id.text.trim())
+                  },
                 ),
               )
             ],
@@ -121,22 +132,8 @@ class _LoginHomeState extends State<LoginHome> {
     );
   }
 
-  void logar(email, password) async {
-    var autenticacaoService = AutenticacaoService();
-    await autenticacaoService.loginJWT(email, password);
-
-    if (autenticacaoService.categoria == '1') {
-      Navigator.pushNamed(
-        context,
-        '/pacotes_empresa',
-      );
-    }
-    if (autenticacaoService.categoria == '2') {
-      Navigator.pushNamed(
-        context,
-        '/pacotes_cliente',
-        arguments: {autenticacaoService.email_usuario},
-      );
-    }
+  void salvar(content, status, user_id) async {
+    var pacotesService = PacotesService();
+    await pacotesService.novo(content, status, user_id);
   }
 }
