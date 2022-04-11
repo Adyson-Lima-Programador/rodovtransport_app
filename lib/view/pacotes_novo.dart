@@ -1,36 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
-import 'package:rodovtransport_app/routes.dart';
-import 'package:rodovtransport_app/view/pacotes_empresa_list.dart';
 
 void main() => runApp(const PacotesNovo());
 
-class PacotesNovo extends StatelessWidget {
+class PacotesNovo extends StatefulWidget {
   const PacotesNovo({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return _novo_pacote();
-  }
-
-  _novo_pacote() {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        primaryColor: const Color(0xffffbd59),
-      ),
-    );
-  }
+  State<PacotesNovo> createState() => _NovoPacoteState();
 }
 
-class NovoPacote extends StatefulWidget {
-  const NovoPacote({Key? key}) : super(key: key);
-
-  @override
-  State<NovoPacote> createState() => _NovoPacoteState();
-}
-
-class _NovoPacoteState extends State<NovoPacote> {
+class _NovoPacoteState extends State<PacotesNovo> {
   final content = TextEditingController();
   final status = TextEditingController();
   final user_id = TextEditingController();

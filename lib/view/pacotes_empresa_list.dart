@@ -4,9 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
-import 'package:rodovtransport_app/routes.dart';
 import 'package:rodovtransport_app/view/pacotes_empresa_tile.dart';
-import 'package:rodovtransport_app/view/pacotes_novo.dart';
 
 class PacotesEmpresa extends StatefulWidget {
   const PacotesEmpresa({Key? key}) : super(key: key);
@@ -115,6 +113,6 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
   }
 
   _novoPacote() {
-    Navigator.push(context,MaterialPageRoute(builder: (context) => PacotesNovo()));
+    Navigator.of(context, rootNavigator: true).pushNamed("/pacotes_novo");
   }
 }
