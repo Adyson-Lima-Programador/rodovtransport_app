@@ -114,6 +114,6 @@ class _NovoPacoteState extends State<PacotesNovo> {
 
   void salvar(content, status, user_id) async {
     var pacotesService = PacotesService();
-    await pacotesService.novo(content, status, user_id);
+    await pacotesService.novo(content, status, int.parse(user_id));
   }
 }

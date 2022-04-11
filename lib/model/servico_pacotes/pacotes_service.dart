@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 
@@ -77,19 +78,26 @@ class PacotesService {
     return pacotes;
   }
 
-  Future<bool> novo(String content, String status, String user_id) async {
+  Future<bool> novo(String content, String status, int user_id) async {
     // Padrão de url para produção
     // var url = Uri.parse("http://localhost:3000/api/v2/packages");
 
     // Endereço IP deve ser verificado a cada inicialização do PC
     var url = Uri(
-        scheme: 'http', host: '10.0.0.156', port: 3000, path: '/api/v2/packages');
-    final Map params = {'content': content, 'status': status, 'user_id':user_id};
+        scheme: 'http',
+        host: '10.0.0.156',
+        port: 3000,
+        path: '/api/v2/packages');
+    final Map<String, String> headers = {"Content-Type": "application/json"};
+    final Map params = {
+      'content': content,
+      'status': status,
+      'user_id': user_id
+    };
+    var pacote = convert.jsonEncode(params);
 
-
-    var response = await http.post(url, body: params);
+    await http.post(url, body: pacote, headers: headers);
 
     return true;
   }
-
 }
