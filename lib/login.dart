@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/servico_autenticacao/autenticacao_service.dart';
 import 'package:rodovtransport_app/routes.dart';
+import 'package:rodovtransport_app/view/pacotes_atualizar.dart';
 import 'package:rodovtransport_app/view/pacotes_cliente_list.dart';
 import 'package:rodovtransport_app/view/pacotes_empresa_list.dart';
 import 'package:rodovtransport_app/view/pacotes_novo.dart';
@@ -29,6 +30,7 @@ _login() {
       Routes.pacotes_cliente: (context) => const PacotesCliente(),
       Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
       Routes.pacotes_novo: (context) => const PacotesNovo(),
+      Routes.pacotes_atualizar: (context) => const PacotesAtualizar(),
     },
   );
 }

@@ -21,7 +21,7 @@ class PacotesEmpresaTile extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                onPressed: () => {_editar(context)},
+                onPressed: () => {_editar(context, pacote)},
                 icon: Icon(Icons.edit),
                 color: const Color(0xffffbd59),
               ),
@@ -37,14 +37,8 @@ class PacotesEmpresaTile extends StatelessWidget {
     );
   }
   
-  _editar(context){
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text('Editar'),
-          );
-        });
+  _editar(context, Pacote pacote){
+    Navigator.of(context, rootNavigator: true).pushNamed("/pacotes_atualizar",arguments: pacote);
   }
 
   _excluir(context){

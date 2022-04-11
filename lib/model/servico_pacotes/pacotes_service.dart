@@ -100,4 +100,29 @@ class PacotesService {
 
     return true;
   }
+
+  Future<bool> atualizar(int id, String content, String status, int user_id) async {
+    // Padrão de url para produção
+    // var url = Uri.parse("http://localhost:3000/api/v2/packages/id");
+
+    // Endereço IP deve ser verificado a cada inicialização do PC
+    var url = Uri(
+        scheme: 'http',
+        host: '10.0.0.156',
+        port: 3000,
+        path: '/api/v2/packages/${id.toString()}');
+    final Map<String, String> headers = {"Content-Type": "application/json"};
+    final Map params = {
+      'id': id,
+      'content': content,
+      'status': status,
+      'user_id': user_id
+    };
+    var pacote = convert.jsonEncode(params);
+
+    await http.put(url, body: pacote, headers: headers);
+
+    return true;
+  }
+
 }
