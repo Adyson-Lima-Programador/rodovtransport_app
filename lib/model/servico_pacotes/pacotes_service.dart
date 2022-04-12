@@ -113,7 +113,7 @@ class PacotesService {
         path: '/api/v2/packages/${id.toString()}');
     final Map<String, String> headers = {"Content-Type": "application/json"};
     final Map params = {
-      'id': id,
+      // 'id': id, não é necessário, gerá erro na api rails
       'content': content,
       'status': status,
       'user_id': user_id
