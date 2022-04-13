@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:rodovtransport_app/model/pacotes_model.dart';
-import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
+import 'package:rodovtransport_app/model/usuarios_model.dart';
+import 'package:rodovtransport_app/model/servico_usuarios/usuarios_service.dart';
 
-class PacotesEmpresaTile extends StatelessWidget {
-  final Pacote pacote;
+class UsuariosEmpresaTile extends StatelessWidget {
+  final Usuario usuario;
 
-  const PacotesEmpresaTile(this.pacote);
+  const UsuariosEmpresaTile(this.usuario);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: Text("Descrição: " + pacote.content),
-        subtitle: Text("Status: " +
-            pacote.status +
+        title: Text("Nome: " + usuario.name),
+        subtitle: Text("Email: " +
+            usuario.email +
             "\n" +
-            "postado em: " +
-            pacote.created_at),
+            "categoria: " +
+            usuario.category),
         trailing: Container(
           width: 100,
           child: Row(
             children: [
               IconButton(
-                onPressed: () => {_editar(context, pacote)},
+                onPressed: () => {_editar(context, usuario)},
                 icon: Icon(Icons.edit),
                 color: const Color(0xffffbd59),
               ),
@@ -38,9 +38,9 @@ class PacotesEmpresaTile extends StatelessWidget {
     );
   }
 
-  _editar(context, Pacote pacote) {
+  _editar(context, Usuario usuario) {
     Navigator.of(context, rootNavigator: true)
-        .pushNamed("/pacotes_atualizar", arguments: pacote);
+        .pushNamed("/usuarios_atualizar", arguments: usuario);
   }
 
   _excluir(context) {
@@ -48,11 +48,10 @@ class PacotesEmpresaTile extends StatelessWidget {
         barrierDismissible: false, // só fecha dialogo pelos botões
         context: context,
         builder: (context) {
-          PacotesService pacotesService = PacotesService();
+          UsuariosService usuariosService = UsuariosService();
           return AlertDialog(
             title: Text("Atenção!"),
-            content: Text(
-                'Esta ação não pode ser desfeita.Deseja continuar?'),
+            content: Text('Esta ação não pode ser desfeita.Deseja continuar?'),
             actions: [
               ElevatedButton(
                   onPressed: () => {Navigator.pop(context, true)},
@@ -63,7 +62,7 @@ class PacotesEmpresaTile extends StatelessWidget {
                   )),
               ElevatedButton(
                   onPressed: () => {
-                        pacotesService.excluir(pacote.id),
+                        usuariosService.excluir(usuario.id),
                         Navigator.pop(context, true),
                       },
                   child: Text("Sim"),

@@ -1,22 +1,20 @@
 import 'dart:async';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rodovtransport_app/model/pacotes_model.dart';
-import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
-import 'package:rodovtransport_app/view/pacotes_empresa_tile.dart';
+import 'package:rodovtransport_app/model/servico_usuarios/usuarios_service.dart';
+import 'package:rodovtransport_app/model/usuarios_model.dart';
+import 'package:rodovtransport_app/view/usuarios_empresa_tile.dart';
 
-class PacotesEmpresa extends StatefulWidget {
-  const PacotesEmpresa({Key? key}) : super(key: key);
+class UsuariosEmpresa extends StatefulWidget {
+  const UsuariosEmpresa({Key? key}) : super(key: key);
 
   @override
-  State<PacotesEmpresa> createState() => _PacotesEmpresaState();
+  State<UsuariosEmpresa> createState() => _UsuariosEmpresaState();
 }
 
-class _PacotesEmpresaState extends State<PacotesEmpresa> {
+class _UsuariosEmpresaState extends State<UsuariosEmpresa> {
   int paginaAtual = 1;
-  late Future<List<Pacote>> future;
-  List<Pacote>? pacotes;
+  late Future<List<Usuario>> future;
+  List<Usuario>? usuarios;
   GlobalKey globalKey = GlobalKey();
 
   @override
@@ -29,7 +27,7 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
     // Só preenche future com método buscarTodos() no primeiro acesso,
     // depois preenche com método navegarPagina()
     if (paginaAtual == 1) {
-      future = PacotesService.buscarTodos();
+      future = UsuariosService.buscarTodos();
     }
 
     return MaterialApp(
@@ -39,13 +37,13 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Pacotes"),
+          title: const Text("Usuarios"),
           backgroundColor: const Color(0xffffbd59),
           foregroundColor: const Color(0xff424242),
           actions: [
             IconButton(
-              onPressed: () => {_navega_para_clientes()},
-              icon: Icon(Icons.person),
+              onPressed: () => {_navega_para_pacotes()},
+              icon: Icon(Icons.local_shipping_outlined),
             ),
             IconButton(
               onPressed: () => {_paginaAnterior()},
@@ -56,7 +54,7 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
               icon: Icon(Icons.arrow_circle_right_outlined),
             ),
             IconButton(
-              onPressed: () => {_novoPacote()},
+              onPressed: () => {_novoUsuario()},
               icon: Icon(Icons.add_circle_outline_outlined),
             )
           ],
@@ -67,18 +65,18 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
-              child: FutureBuilder<List<Pacote>>(
+              child: FutureBuilder<List<Usuario>>(
                 future: future,
                 builder: (context, snapshot) {
-                  pacotes = snapshot.data;
+                  usuarios = snapshot.data;
                   if (snapshot.hasData) {
                     return ListView.builder(
-                      itemCount: pacotes!.length,
+                      itemCount: usuarios!.length,
                       itemBuilder: (context, i) =>
-                          PacotesEmpresaTile(pacotes!.elementAt(i)),
+                          UsuariosEmpresaTile(usuarios!.elementAt(i)),
                     );
                   } else if (snapshot.hasError) {
-                    return Text('Não foi possivel buscar os pacotes!');
+                    return Text('Não foi possivel buscar os usuários!');
                   }
                   return const CircularProgressIndicator(
                     color: Color(0xffffbd59),
@@ -92,8 +90,8 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
     );
   }
 
-  void _navega_para_clientes(){
-    Navigator.of(context, rootNavigator: true).pushNamed("/usuarios_empresa");
+  void _navega_para_pacotes(){
+    Navigator.of(context, rootNavigator: true).pushNamed("/pacotes_empresa");
   }
 
   Future<void> _paginaAnterior() async {
@@ -102,7 +100,7 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
       setState(() {
         if (paginaAtual > 1) {
           paginaAtual -= 1;
-          future = PacotesService.navegarPagina(paginaAtual);
+          future = UsuariosService.navegarPagina(paginaAtual);
         }
       });
     }
@@ -112,15 +110,15 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
     if (mounted) {
       globalKey = GlobalKey();
       setState(() {
-        if (paginaAtual < 15) {
+        if (paginaAtual < 5) {
           paginaAtual += 1;
-          future = PacotesService.navegarPagina(paginaAtual);
+          future = UsuariosService.navegarPagina(paginaAtual);
         }
       });
     }
   }
 
-  _novoPacote() {
-    Navigator.of(context, rootNavigator: true).pushNamed("/pacotes_novo");
+  _novoUsuario() {
+    Navigator.of(context, rootNavigator: true).pushNamed("/usuarios_novo");
   }
 }

@@ -4,4 +4,5 @@ class Routes{
   static const String pacotes_empresa = '/pacotes_empresa';
   static const String pacotes_novo = '/pacotes_novo';
   static const String pacotes_atualizar = '/pacotes_atualizar';
+  static const String usuarios_empresa = '/usuarios_empresa';
 }
