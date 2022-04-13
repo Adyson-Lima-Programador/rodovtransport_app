@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
+import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
 
 class PacotesEmpresaTile extends StatelessWidget {
   final Pacote pacote;
@@ -36,17 +37,41 @@ class PacotesEmpresaTile extends StatelessWidget {
       ),
     );
   }
-  
-  _editar(context, Pacote pacote){
-    Navigator.of(context, rootNavigator: true).pushNamed("/pacotes_atualizar",arguments: pacote);
+
+  _editar(context, Pacote pacote) {
+    Navigator.of(context, rootNavigator: true)
+        .pushNamed("/pacotes_atualizar", arguments: pacote);
   }
 
-  _excluir(context){
+  _excluir(context) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) {
+          PacotesService pacotesService = PacotesService();
           return AlertDialog(
-            content: Text('Excluir'),
+            title: Text("Atenção!"),
+            content: Text(
+                'Esta ação não pode ser desfeita.Deseja realmente continuar?'),
+            actions: [
+              ElevatedButton(
+                  onPressed: () => {Navigator.pop(context, true)},
+                  child: Text("Não"),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xffffbd59),
+                    onPrimary: const Color(0xff424242),
+                  )),
+              ElevatedButton(
+                  onPressed: () => {
+                        pacotesService.excluir(pacote.id),
+                        Navigator.pop(context, true),
+                      },
+                  child: Text("Sim"),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xffF44336),
+                    onPrimary: const Color(0xff424242),
+                  )),
+            ],
           );
         });
   }
