@@ -9,10 +9,7 @@ class UsuariosService {
 
     // Endereço IP deve ser verificado a cada inicialização do PC Dalia@rodovtransport.com
     var url = Uri(
-        scheme: 'http',
-        host: '10.0.0.156',
-        port: 3000,
-        path: '/api/v2/users');
+        scheme: 'http', host: '10.0.0.156', port: 3000, path: '/api/v2/users');
 
     var response = await http.get(url);
     String json = response.body;
@@ -77,16 +74,14 @@ class UsuariosService {
     return usuarios;
   }
 
-  Future<bool> novo(String email, String name, String password, String category ) async {
+  Future<bool> novo(
+      String email, String name, String password, String category) async {
     // Padrão de url para produção
     // var url = Uri.parse("http://localhost:3000/api/v2/users");
 
     // Endereço IP deve ser verificado a cada inicialização do PC
     var url = Uri(
-        scheme: 'http',
-        host: '10.0.0.156',
-        port: 3000,
-        path: '/api/v2/users');
+        scheme: 'http', host: '10.0.0.156', port: 3000, path: '/api/v2/users');
     final Map<String, String> headers = {"Content-Type": "application/json"};
     final Map params = {
       'email': email,
@@ -101,8 +96,8 @@ class UsuariosService {
     return true;
   }
 
-  Future<bool> atualizar(
-      int id, String email, String name, String password, String category) async {
+  Future<bool> atualizar(int id, String email, String name, String password,
+      String category) async {
     // Padrão de url para produção
     // var url = Uri.parse("http://localhost:3000/api/v2/users/id");
 
