@@ -6,6 +6,7 @@ import 'package:rodovtransport_app/view/pacotes_atualizar.dart';
 import 'package:rodovtransport_app/view/pacotes_cliente_list.dart';
 import 'package:rodovtransport_app/view/pacotes_empresa_list.dart';
 import 'package:rodovtransport_app/view/pacotes_novo.dart';
+import 'package:rodovtransport_app/view/usuarios_atualizar.dart';
 import 'package:rodovtransport_app/view/usuarios_empresa_list.dart';
 import 'package:rodovtransport_app/view/usuarios_novo.dart';
 
@@ -34,7 +35,8 @@ _login() {
       Routes.pacotes_novo: (context) => const PacotesNovo(),
       Routes.pacotes_atualizar: (context) => const PacotesAtualizar(),
       Routes.usuarios_empresa: (context) => const UsuariosEmpresa(),
-      Routes.usuarios_novo: (context) => const UsuariosNovo()
+      Routes.usuarios_novo: (context) => const UsuariosNovo(),
+      Routes.usuarios_atualizar: (context) => const UsuariosAtualizar()
     },
   );
 }

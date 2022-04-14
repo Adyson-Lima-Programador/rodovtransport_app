@@ -6,4 +6,5 @@ class Routes{
   static const String pacotes_atualizar = '/pacotes_atualizar';
   static const String usuarios_empresa = '/usuarios_empresa';
   static const String usuarios_novo = '/usuarios_novo';
+  static const String usuarios_atualizar = '/usuarios_atualizar';
 }

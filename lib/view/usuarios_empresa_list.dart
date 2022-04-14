@@ -37,7 +37,7 @@ class _UsuariosEmpresaState extends State<UsuariosEmpresa> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Usuarios"),
+          title: const Text("Usuários"),
           backgroundColor: const Color(0xffffbd59),
           foregroundColor: const Color(0xff424242),
           actions: [

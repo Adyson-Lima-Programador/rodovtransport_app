@@ -106,12 +106,12 @@ class UsuariosService {
         scheme: 'http',
         host: '10.0.0.156',
         port: 3000,
-        path: '/api/v2/users/${id.toString()}');
+        path: '/api/v1/users/${id.toString()}');
     final Map<String, String> headers = {"Content-Type": "application/json"};
     final Map params = {
-      // 'id': id, não é necessário, gerá erro na api rails
-      'email': email,
+      // 'id': id, //não é necessário, gerá erro na api rails
       'name': name,
+      'email': email,
       'password': password,
       'category': category
     };
