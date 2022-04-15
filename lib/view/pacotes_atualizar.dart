@@ -107,16 +107,21 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
               Padding(
                 padding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: const Color(0xffffbd59),
-                    onPrimary: const Color(0xff424242),
-                  ),
-                  child: const Text('Atualizar'),
-                  onPressed: () => {
-                    atualizar(this.id, content.text.trim(), status.text.trim(),
-                        user_id.text.trim())
-                  },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color(0xffffbd59),
+                        onPrimary: const Color(0xff424242),
+                      ),
+                      child: const Text('Atualizar'),
+                      onPressed: () => {
+                        atualizar(this.id, content.text.trim(), status.text.trim(),
+                            user_id.text.trim())
+                      },
+                    ),
+                  ],
                 ),
               )
             ],

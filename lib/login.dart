@@ -61,7 +61,7 @@ class _LoginHomeState extends State<LoginHome> {
 
   @override
   Widget build(BuildContext context) {
-    // chama alerta após configrar tela principal
+    // chama alerta após configurar tela principal
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       alerta(context);
     });
@@ -116,14 +116,20 @@ class _LoginHomeState extends State<LoginHome> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: const Color(0xffffbd59),
-                    onPrimary: const Color(0xff424242),
-                  ),
-                  child: const Text('Entrar'),
-                  onPressed: () =>
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color(0xffffbd59),
+                        onPrimary: const Color(0xff424242),
+                      ),
+                      child: const Text('Entrar'),
+                      onPressed: () =>
                       {logar(email.text.trim(), password.text.trim())},
+                    )
+                  ],
+
                 ),
               )
             ],
