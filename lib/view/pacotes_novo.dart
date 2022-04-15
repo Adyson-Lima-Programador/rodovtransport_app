@@ -105,7 +105,8 @@ class _NovoPacoteState extends State<PacotesNovo> {
                         child: const Text('Salvar'),
                         onPressed: () => {
                           salvar(content.text.trim(), status.text.trim(),
-                              user_id.text.trim())
+                              user_id.text.trim()),
+                          limpar_form(),
                         },
                       ),
                     ],
@@ -122,5 +123,11 @@ class _NovoPacoteState extends State<PacotesNovo> {
   void salvar(content, status, user_id) async {
     var pacotesService = PacotesService();
     await pacotesService.novo(content, status, int.parse(user_id));
+  }
+
+  limpar_form() {
+    content.text = '';
+    status.text = '';
+    user_id.text = '';
   }
 }

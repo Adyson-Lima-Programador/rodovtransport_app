@@ -143,7 +143,8 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                               email.text.trim(),
                               name.text.trim(),
                               password.text.trim(),
-                              category.text.trim())
+                              category.text.trim()),
+                          limpar_form(),
                         },
                       ),
                     ],
@@ -161,5 +162,13 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
       String category) async {
     var usuariosService = UsuariosService();
     await usuariosService.atualizar(id, email, name, password, category);
+  }
+
+  limpar_form() {
+    id = 0;
+    email.text = '';
+    name.text = '';
+    password.text = '';
+    category.text = '';
   }
 }

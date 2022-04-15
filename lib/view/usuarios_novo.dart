@@ -125,7 +125,8 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                         child: const Text('Salvar'),
                         onPressed: () => {
                           salvar(email.text.trim(), name.text.trim(),
-                              password.text.trim(), category.text.trim())
+                              password.text.trim(), category.text.trim()),
+                          limpar_form(),
                         },
                       ),
                     ],
@@ -142,5 +143,12 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
   void salvar(email, name, password, category) async {
     var usuariosService = UsuariosService();
     await usuariosService.novo(email, name, password, category);
+  }
+
+  limpar_form() {
+    email.text = '';
+    name.text = '';
+    password.text = '';
+    category.text = '';
   }
 }

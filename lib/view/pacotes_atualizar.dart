@@ -118,7 +118,8 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                         child: const Text('Atualizar'),
                         onPressed: () => {
                           atualizar(this.id, content.text.trim(),
-                              status.text.trim(), user_id.text.trim())
+                              status.text.trim(), user_id.text.trim()),
+                          limpar_form(),
                         },
                       ),
                     ],
@@ -135,5 +136,12 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
   void atualizar(id, content, status, user_id) async {
     var pacotesService = PacotesService();
     await pacotesService.atualizar(id, content, status, int.parse(user_id));
+  }
+
+  limpar_form() {
+    id = 0;
+    content.text = '';
+    status.text = '';
+    user_id.text = '';
   }
 }
