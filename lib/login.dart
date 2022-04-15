@@ -126,10 +126,9 @@ class _LoginHomeState extends State<LoginHome> {
                       ),
                       child: const Text('Entrar'),
                       onPressed: () =>
-                      {logar(email.text.trim(), password.text.trim())},
+                          {logar(email.text.trim(), password.text.trim())},
                     )
                   ],
-
                 ),
               )
             ],
@@ -165,11 +164,10 @@ class _LoginHomeState extends State<LoginHome> {
         builder: (context) {
           return AlertDialog(
             title: Text("Atenção!"),
-            content: Text(
-                'Este aplicativo não se destina ao uso comercial. '
-                    'Ele é apenas uma demonstração de conhecimentos para portifólio.'
-                    'E não deve ser adotado como solução.'
-                    'Obrigado!'),
+            content: Text('Este aplicativo não se destina ao uso comercial. '
+                'Ele é apenas uma demonstração de conhecimentos para portifólio.'
+                'E não deve ser adotado como solução.'
+                'Obrigado!'),
             actions: [
               ElevatedButton(
                   onPressed: () => {Navigator.pop(context, true)},

@@ -47,111 +47,118 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
         backgroundColor: const Color(0xffffbd59),
         foregroundColor: const Color(0xff424242),
       ),
-      body: Form(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: email,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Color(0xffffbd59),
-                    )),
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: name,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Color(0xffffbd59),
-                    )),
-                    labelText: 'Nome',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: password,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Color(0xffffbd59),
-                    )),
-                    labelText: 'Senha',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: category,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Color(0xffffbd59),
-                    )),
-                    labelText: 'Categoria',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color(0xffffbd59),
-                        onPrimary: const Color(0xff424242),
+      body: SingleChildScrollView(
+        child: Form(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: email,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
                       ),
-                      child: const Text('Atualizar'),
-                      onPressed: () => {
-                        atualizar(this.id, email.text.trim(), name.text.trim(),
-                            password.text.trim(), category.text.trim())
-                      },
                     ),
-                  ],
+                  ),
                 ),
-              )
-            ],
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: name,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Nome',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: password,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Senha',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: category,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Categoria',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xffffbd59),
+                          onPrimary: const Color(0xff424242),
+                        ),
+                        child: const Text('Atualizar'),
+                        onPressed: () => {
+                          atualizar(
+                              this.id,
+                              email.text.trim(),
+                              name.text.trim(),
+                              password.text.trim(),
+                              category.text.trim())
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  void atualizar(int id, String email, String name, String password, String category) async {
+  void atualizar(int id, String email, String name, String password,
+      String category) async {
     var usuariosService = UsuariosService();
     await usuariosService.atualizar(id, email, name, password, category);
   }

@@ -29,7 +29,6 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
 
   @override
   Widget build(BuildContext context) {
-
     // recebe objeto pacote enviado como arguments no Navigator
     final pacote = ModalRoute.of(context)?.settings.arguments as Pacote;
 
@@ -45,86 +44,88 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
         backgroundColor: const Color(0xffffbd59),
         foregroundColor: const Color(0xff424242),
       ),
-      body: Form(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: content,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xffffbd59),
-                        )),
-                    labelText: 'Descrição',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: status,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xffffbd59),
-                        )),
-                    labelText: 'Status',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextFormField(
-                  cursorColor: const Color(0xffffbd59),
-                  controller: user_id,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xffffbd59),
-                        )),
-                    labelText: 'Código do usuário',
-                    labelStyle: TextStyle(
-                      color: Color(0xffffbd59),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color(0xffffbd59),
-                        onPrimary: const Color(0xff424242),
+      body: SingleChildScrollView(
+        child: Form(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: content,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Descrição',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
                       ),
-                      child: const Text('Atualizar'),
-                      onPressed: () => {
-                        atualizar(this.id, content.text.trim(), status.text.trim(),
-                            user_id.text.trim())
-                      },
                     ),
-                  ],
+                  ),
                 ),
-              )
-            ],
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: status,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Status',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: TextFormField(
+                    cursorColor: const Color(0xffffbd59),
+                    controller: user_id,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Color(0xffffbd59),
+                      )),
+                      labelText: 'Código do usuário',
+                      labelStyle: TextStyle(
+                        color: Color(0xffffbd59),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xffffbd59),
+                          onPrimary: const Color(0xff424242),
+                        ),
+                        child: const Text('Atualizar'),
+                        onPressed: () => {
+                          atualizar(this.id, content.text.trim(),
+                              status.text.trim(), user_id.text.trim())
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
