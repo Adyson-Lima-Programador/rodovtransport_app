@@ -61,6 +61,10 @@ class _LoginHomeState extends State<LoginHome> {
 
   @override
   Widget build(BuildContext context) {
+    // chama alerta após configrar tela principal
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      alerta(context);
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('RodovTransport'),
@@ -146,5 +150,30 @@ class _LoginHomeState extends State<LoginHome> {
         arguments: {autenticacaoService.email_usuario},
       );
     }
+  }
+
+  alerta(context) {
+    showDialog(
+        barrierDismissible: false, // só fecha dialogo pelos botões
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Atenção!"),
+            content: Text(
+                'Este aplicativo não se destina ao uso comercial. '
+                    'Ele é apenas uma demonstração de conhecimentos para portifólio.'
+                    'E não deve ser adotado como solução.'
+                    'Obrigado!'),
+            actions: [
+              ElevatedButton(
+                  onPressed: () => {Navigator.pop(context, true)},
+                  child: Text("Entendi"),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xffffbd59),
+                    onPrimary: const Color(0xff424242),
+                  )),
+            ],
+          );
+        });
   }
 }
