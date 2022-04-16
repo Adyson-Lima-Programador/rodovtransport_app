@@ -17,6 +17,7 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
   final content = TextEditingController();
   final status = TextEditingController();
   final user_id = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -46,6 +47,7 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,6 +58,11 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: content,
+                    validator: (content) {
+                      if (content == null || content.isEmpty) {
+                        return "Digite uma descrição";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -74,6 +81,11 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: status,
+                    validator: (status) {
+                      if (status == null || status.isEmpty) {
+                        return "Digite um status";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -92,6 +104,11 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: user_id,
+                    validator: (user_id) {
+                      if (user_id == null || user_id.isEmpty) {
+                        return "Digite um número de usuário";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -117,9 +134,12 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                         ),
                         child: const Text('Atualizar'),
                         onPressed: () => {
-                          atualizar(this.id, content.text.trim(),
-                              status.text.trim(), user_id.text.trim()),
-                          limpar_form(),
+                          if (_formKey.currentState!.validate())
+                            {
+                              atualizar(this.id, content.text.trim(),
+                                  status.text.trim(), user_id.text.trim()),
+                              limpar_form(),
+                            }
                         },
                       ),
                     ],

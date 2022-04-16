@@ -15,6 +15,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
   final name = TextEditingController();
   final password = TextEditingController();
   final category = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -35,6 +36,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -45,6 +47,11 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: email,
+                    validator: (email){
+                      if(email == null || email.isEmpty){
+                        return "Digite um email";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -63,6 +70,11 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: name,
+                    validator: (name){
+                      if(name == null || name.isEmpty){
+                        return "Digite um nome";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -81,6 +93,11 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: password,
+                    validator: (password){
+                      if(password == null || password.isEmpty){
+                        return "Digite uma senha";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -99,6 +116,11 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: category,
+                    validator: (category){
+                      if(category == null || category.isEmpty){
+                        return "Selecione categoria 1 ou 2";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -124,9 +146,12 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                         ),
                         child: const Text('Salvar'),
                         onPressed: () => {
-                          salvar(email.text.trim(), name.text.trim(),
-                              password.text.trim(), category.text.trim()),
-                          limpar_form(),
+                          if (_formKey.currentState!.validate())
+                            {
+                              salvar(email.text.trim(), name.text.trim(),
+                                password.text.trim(), category.text.trim()),
+                            limpar_form(),
+                          }
                         },
                       ),
                     ],

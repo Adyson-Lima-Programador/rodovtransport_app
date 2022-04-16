@@ -18,6 +18,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
   final name = TextEditingController();
   final password = TextEditingController();
   final category = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -49,6 +50,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -59,6 +61,11 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: email,
+                    validator: (email) {
+                      if (email == null || email.isEmpty) {
+                        return "Digite um email";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -77,6 +84,11 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: name,
+                    validator: (name) {
+                      if (name == null || name.isEmpty) {
+                        return "Digite um nome";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -95,6 +107,11 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: password,
+                    validator: (password) {
+                      if (password == null || password.isEmpty) {
+                        return "Digite uma senha";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -113,6 +130,11 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
                     controller: category,
+                    validator: (category) {
+                      if (category == null || category.isEmpty) {
+                        return "Selecione categoria 1 ou 2";
+                      }
+                    },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -138,13 +160,16 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                         ),
                         child: const Text('Atualizar'),
                         onPressed: () => {
-                          atualizar(
-                              this.id,
-                              email.text.trim(),
-                              name.text.trim(),
-                              password.text.trim(),
-                              category.text.trim()),
-                          limpar_form(),
+                          if (_formKey.currentState!.validate())
+                            {
+                              atualizar(
+                                  this.id,
+                                  email.text.trim(),
+                                  name.text.trim(),
+                                  password.text.trim(),
+                                  category.text.trim()),
+                              limpar_form(),
+                            }
                         },
                       ),
                     ],

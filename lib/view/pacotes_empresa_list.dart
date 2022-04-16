@@ -92,7 +92,7 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
     );
   }
 
-  void _navega_para_clientes(){
+  void _navega_para_clientes() {
     Navigator.of(context, rootNavigator: true).pushNamed("/usuarios_empresa");
   }
 
