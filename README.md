@@ -1,42 +1,32 @@
-# Aplicativo em Flutter rodovtransport_app integrado a API REST <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a> e ao <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_web">frontend Angular</a>
+## O sistema rodovtransport é uma solução completa para gerenciamento de cargas para transportadoras rodoviárias.
+### O sistema inclui: 
+#### - Aplicativo em Flutter <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_app">rodovtransport_app</a>.
+#### - API REST em Ruby on Rails <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a>.
+#### - Aplicação web em Angular <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_web">rodovtransport_web</a>.
 
-# Autor
+## Autor
 
 Adyson Lima
 
 <a href="https://www.linkedin.com/in/adyson-lima-programador/">Meu LinkedIn</a>
+ 
+#### Solicite os dados para logar na aplicação pelo meu linkedin
 
-# Sobre o projeto
-<a href="">Acesse aqui a aplicação publicada no Google Play</a>
-### Solicite os dados para logar na aplicação pelo meu linkedin
+## Aplicativo mobile Flutter
+<p><img src="https://github.com/Adyson-Lima-Programador/rodovtransport_app/blob/main/imagens/app_web.gif" width="350px"/></p>
 
-Este aplicativo é desenvolvido em **Flutter** e é parte de uma aplicação FullStack para gerenciamento de cargas para transportadoras rodoviárias.
+## Aplicação web Angular
+<img src="https://github.com/Adyson-Lima-Programador/rodovtransport_web/blob/main/src/app/imagens/app_web.gif"/>
 
-# Layout mobile Flutter
-<img src="https://github.com/Adyson-Lima-Programador/rodovtransport_app/blob/main/imagens/app_web.gif" width="350px"/>
+## Imagem da documentação da API
+<img src="https://github.com/Adyson-Lima-Programador/rodovtransport_api/blob/main/documentacao/imagem-doc-api.png" />
 
-# Tecnologias utilizadas
-
+## Tecnologias utilizadas
+- Ruby on Rails
+- Ruby
 - Flutter
 - Dart
-
-## Implantação em produção
-- Google Play
-
-# Como executar o projeto
-
-## Aplicativo Flutter
-Pré-requisitos:
-- Dart 2.16.1
-- Flutter 2.10.2
-
-```bash
-# clonar repositório
-git clone git@github.com:Adyson-Lima-Programador/rodovtransport_app.git
-
-# entrar na pasta rodovtransport_app
-cd rodovtransport_app
-
-# executar o projeto no android studio ou vscode
-```
-
+- Angular
+- Typescript
+- Heroku
+- Postgresql
