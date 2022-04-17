@@ -1,4 +1,4 @@
-## O sistema rodovtransport é uma solução completa para gerenciamento de cargas para transportadoras rodoviárias.
+## O sistema rodovtransport é uma solução fullstack completa para gerenciamento de cargas para transportadoras rodoviárias.
 ### O sistema inclui: 
 #### - Aplicativo em Flutter <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_app">rodovtransport_app</a>.
 #### - API REST em Ruby on Rails <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a>.
@@ -22,11 +22,16 @@ Adyson Lima
 <img src="https://github.com/Adyson-Lima-Programador/rodovtransport_api/blob/main/documentacao/imagem-doc-api.png" />
 
 ## Tecnologias utilizadas
-- Ruby on Rails
-- Ruby
-- Flutter
-- Dart
-- Angular
-- Typescript
-- Heroku
-- Postgresql
+### Frameworks
+#### - Ruby on Rails
+#### - Angular
+#### - Flutter
+### Linguagens
+#### - Ruby
+#### - Typescript
+#### - Dart
+### Hospedagens
+#### - Heroku
+#### - Netlify
+### Banco de dados
+#### - Postgresql
