@@ -13,14 +13,14 @@ class PacotesNovo extends StatefulWidget {
 class _NovoPacoteState extends State<PacotesNovo> {
   final content = TextEditingController();
   final status = TextEditingController();
-  final user_id = TextEditingController();
+  final userId = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     content.dispose();
     status.dispose();
-    user_id.dispose();
+    userId.dispose();
     super.dispose();
   }
 
@@ -49,6 +49,7 @@ class _NovoPacoteState extends State<PacotesNovo> {
                       if (content == null || content.isEmpty) {
                         return "Digite uma descrição";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -72,6 +73,7 @@ class _NovoPacoteState extends State<PacotesNovo> {
                       if (status == null || status.isEmpty) {
                         return "Digite um status";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -90,11 +92,12 @@ class _NovoPacoteState extends State<PacotesNovo> {
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
-                    controller: user_id,
-                    validator: (user_id) {
-                      if (user_id == null || user_id.isEmpty) {
+                    controller: userId,
+                    validator: (userId) {
+                      if (userId == null || userId.isEmpty) {
                         return "Digite um número de usuário";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -124,8 +127,8 @@ class _NovoPacoteState extends State<PacotesNovo> {
                           if (_formKey.currentState!.validate())
                             {
                               salvar(content.text.trim(), status.text.trim(),
-                                  user_id.text.trim()),
-                              limpar_form(),
+                                  userId.text.trim()),
+                              limparForm(),
                             }
                         },
                       ),
@@ -140,14 +143,14 @@ class _NovoPacoteState extends State<PacotesNovo> {
     );
   }
 
-  void salvar(content, status, user_id) async {
+  void salvar(content, status, userId) async {
     var pacotesService = PacotesService();
-    await pacotesService.novo(content, status, int.parse(user_id));
+    await pacotesService.novo(content, status, int.parse(userId));
   }
 
-  limpar_form() {
+  limparForm() {
     content.text = '';
     status.text = '';
-    user_id.text = '';
+    userId.text = '';
   }
 }

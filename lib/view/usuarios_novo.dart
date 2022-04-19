@@ -51,6 +51,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                       if(email == null || email.isEmpty){
                         return "Digite um email";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -74,6 +75,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                       if(name == null || name.isEmpty){
                         return "Digite um nome";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -97,6 +99,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                       if(password == null || password.isEmpty){
                         return "Digite uma senha";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -120,6 +123,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                       if(category == null || category.isEmpty){
                         return "Selecione categoria 1 ou 2";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -150,7 +154,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
                             {
                               salvar(email.text.trim(), name.text.trim(),
                                 password.text.trim(), category.text.trim()),
-                            limpar_form(),
+                            limparForm(),
                           }
                         },
                       ),
@@ -170,7 +174,7 @@ class _NovoUsuarioState extends State<UsuariosNovo> {
     await usuariosService.novo(email, name, password, category);
   }
 
-  limpar_form() {
+  limparForm() {
     email.text = '';
     name.text = '';
     password.text = '';

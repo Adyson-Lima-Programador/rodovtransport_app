@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
@@ -21,9 +20,9 @@ class _PacotesClienteState extends State<PacotesCliente> {
 
   @override
   Widget build(BuildContext context) {
-    var email_usuario_logado =
+    var emailUsuarioLogado =
         ModalRoute.of(context)!.settings.arguments.toString();
-    var email = email_usuario_logado.substring(1, email_usuario_logado.length - 1);
+    var email = emailUsuarioLogado.substring(1, emailUsuarioLogado.length - 1);
     future = PacotesService.buscarPorEmail(email);
 
     return MaterialApp(
@@ -51,7 +50,7 @@ class _PacotesClienteState extends State<PacotesCliente> {
                         PacotesClienteTile(pacotes.elementAt(i)),
                   );
                 } else if (snapshot.hasError) {
-                  return Text('Não foi possivel buscar seus pacotes!');
+                  return const Text('Não foi possivel buscar seus pacotes!');
                 }
                 return const CircularProgressIndicator(
                   color: Color(0xffffbd59),

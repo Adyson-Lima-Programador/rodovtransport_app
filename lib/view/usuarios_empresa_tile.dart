@@ -17,18 +17,18 @@ class UsuariosEmpresaTile extends StatelessWidget {
             "\n" +
             "categoria: " +
             usuario.category),
-        trailing: Container(
+        trailing: SizedBox(
           width: 100,
           child: Row(
             children: [
               IconButton(
                 onPressed: () => {_editar(context, usuario)},
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
                 color: const Color(0xffffbd59),
               ),
               IconButton(
                 onPressed: () => {_excluir(context)},
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
                 color: Colors.red,
               )
             ],
@@ -50,12 +50,12 @@ class UsuariosEmpresaTile extends StatelessWidget {
         builder: (context) {
           UsuariosService usuariosService = UsuariosService();
           return AlertDialog(
-            title: Text("Atenção!"),
-            content: Text('Esta ação não pode ser desfeita.Deseja continuar?'),
+            title: const Text("Atenção!"),
+            content: const Text('Esta ação não pode ser desfeita.Deseja continuar?'),
             actions: [
               ElevatedButton(
                   onPressed: () => {Navigator.pop(context, true)},
-                  child: Text("Não"),
+                  child: const Text("Não"),
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xffffbd59),
                     onPrimary: const Color(0xff424242),
@@ -65,7 +65,7 @@ class UsuariosEmpresaTile extends StatelessWidget {
                         usuariosService.excluir(usuario.id),
                         Navigator.pop(context, true),
                       },
-                  child: Text("Sim"),
+                  child: const Text("Sim"),
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xffF44336),
                     onPrimary: const Color(0xff424242),

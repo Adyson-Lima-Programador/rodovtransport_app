@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/usuarios_model.dart';
 import 'package:rodovtransport_app/model/servico_usuarios/usuarios_service.dart';
@@ -36,11 +35,11 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
     final usuario = ModalRoute.of(context)?.settings.arguments as Usuario;
 
     // preenche formulário com dados do usuario enviado no Navigator
-    this.id = usuario.id;
-    this.email.text = usuario.email;
-    this.name.text = usuario.name;
-    this.password.text = usuario.password;
-    this.category.text = usuario.category;
+    id = usuario.id;
+    email.text = usuario.email;
+    name.text = usuario.name;
+    password.text = usuario.password;
+    category.text = usuario.category;
 
     return Scaffold(
       appBar: AppBar(
@@ -65,6 +64,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                       if (email == null || email.isEmpty) {
                         return "Digite um email";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -88,6 +88,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                       if (name == null || name.isEmpty) {
                         return "Digite um nome";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -111,6 +112,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                       if (password == null || password.isEmpty) {
                         return "Digite uma senha";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -134,6 +136,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                       if (category == null || category.isEmpty) {
                         return "Selecione categoria 1 ou 2";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -163,12 +166,12 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
                           if (_formKey.currentState!.validate())
                             {
                               atualizar(
-                                  this.id,
+                                  id,
                                   email.text.trim(),
                                   name.text.trim(),
                                   password.text.trim(),
                                   category.text.trim()),
-                              limpar_form(),
+                              limparForm(),
                             }
                         },
                       ),
@@ -189,7 +192,7 @@ class _AtualizarUsuarioState extends State<UsuariosAtualizar> {
     await usuariosService.atualizar(id, email, name, password, category);
   }
 
-  limpar_form() {
+  limparForm() {
     id = 0;
     email.text = '';
     name.text = '';

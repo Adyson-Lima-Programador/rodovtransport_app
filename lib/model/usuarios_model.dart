@@ -4,8 +4,8 @@ class Usuario {
   final String name;
   final String password;
   final String category;
-  final String created_at;
-  final String updated_at;
+  final String createdAt;
+  final String updatedAt;
 
   const Usuario(
       {this.id = 0,
@@ -13,8 +13,8 @@ class Usuario {
       required this.name,
       required this.password,
       required this.category,
-      required this.created_at,
-      required this.updated_at});
+      required this.createdAt,
+      required this.updatedAt});
 
   factory Usuario.fromJson(Map<dynamic, dynamic> json) {
     return Usuario(
@@ -23,19 +23,19 @@ class Usuario {
         name: json['name'],
         password: json['password'],
         category: json['category'],
-        created_at: json['created_at'],
-        updated_at: json['updated_at']);
+        createdAt: json['created_at'],
+        updatedAt: json['updated_at']);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['email'] = this.email;
-    data['name'] = this.name;
-    data['password'] = this.password;
-    data['category'] = this.category;
-    data['created_at'] = this.created_at;
-    data['updated_at'] = this.updated_at;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['email'] = email;
+    data['name'] = name;
+    data['password'] = password;
+    data['category'] = category;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

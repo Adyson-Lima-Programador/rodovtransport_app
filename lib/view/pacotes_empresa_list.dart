@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
@@ -44,20 +42,20 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
           foregroundColor: const Color(0xff424242),
           actions: [
             IconButton(
-              onPressed: () => {_navega_para_clientes()},
-              icon: Icon(Icons.person),
+              onPressed: () => {_navegaParaClientes()},
+              icon: const Icon(Icons.person),
             ),
             IconButton(
               onPressed: () => {_paginaAnterior()},
-              icon: Icon(Icons.arrow_circle_left_outlined),
+              icon: const Icon(Icons.arrow_circle_left_outlined),
             ),
             IconButton(
               onPressed: () => {_proximaPagina()},
-              icon: Icon(Icons.arrow_circle_right_outlined),
+              icon: const Icon(Icons.arrow_circle_right_outlined),
             ),
             IconButton(
               onPressed: () => {_novoPacote()},
-              icon: Icon(Icons.add_circle_outline_outlined),
+              icon: const Icon(Icons.add_circle_outline_outlined),
             )
           ],
         ),
@@ -78,7 +76,7 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
                           PacotesEmpresaTile(pacotes!.elementAt(i)),
                     );
                   } else if (snapshot.hasError) {
-                    return Text('Não foi possivel buscar os pacotes!');
+                    return const Text('Não foi possivel buscar os pacotes!');
                   }
                   return const CircularProgressIndicator(
                     color: Color(0xffffbd59),
@@ -92,7 +90,7 @@ class _PacotesEmpresaState extends State<PacotesEmpresa> {
     );
   }
 
-  void _navega_para_clientes() {
+  void _navegaParaClientes() {
     Navigator.of(context, rootNavigator: true).pushNamed("/usuarios_empresa");
   }
 

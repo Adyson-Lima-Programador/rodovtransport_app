@@ -42,20 +42,20 @@ class _UsuariosEmpresaState extends State<UsuariosEmpresa> {
           foregroundColor: const Color(0xff424242),
           actions: [
             IconButton(
-              onPressed: () => {_navega_para_pacotes()},
-              icon: Icon(Icons.local_shipping_outlined),
+              onPressed: () => {_navegaParaPacotes()},
+              icon: const Icon(Icons.local_shipping_outlined),
             ),
             IconButton(
               onPressed: () => {_paginaAnterior()},
-              icon: Icon(Icons.arrow_circle_left_outlined),
+              icon: const Icon(Icons.arrow_circle_left_outlined),
             ),
             IconButton(
               onPressed: () => {_proximaPagina()},
-              icon: Icon(Icons.arrow_circle_right_outlined),
+              icon: const Icon(Icons.arrow_circle_right_outlined),
             ),
             IconButton(
               onPressed: () => {_novoUsuario()},
-              icon: Icon(Icons.add_circle_outline_outlined),
+              icon: const Icon(Icons.add_circle_outline_outlined),
             )
           ],
         ),
@@ -76,7 +76,7 @@ class _UsuariosEmpresaState extends State<UsuariosEmpresa> {
                           UsuariosEmpresaTile(usuarios!.elementAt(i)),
                     );
                   } else if (snapshot.hasError) {
-                    return Text('Não foi possivel buscar os usuários!');
+                    return const Text('Não foi possivel buscar os usuários!');
                   }
                   return const CircularProgressIndicator(
                     color: Color(0xffffbd59),
@@ -90,7 +90,7 @@ class _UsuariosEmpresaState extends State<UsuariosEmpresa> {
     );
   }
 
-  void _navega_para_pacotes(){
+  void _navegaParaPacotes(){
     Navigator.of(context, rootNavigator: true).pushNamed("/pacotes_empresa");
   }
 

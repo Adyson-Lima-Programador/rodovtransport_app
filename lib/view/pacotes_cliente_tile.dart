@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 
 class PacotesClienteTile extends StatelessWidget {
+
   final Pacote pacote;
 
   const PacotesClienteTile(this.pacote);
@@ -15,7 +16,7 @@ class PacotesClienteTile extends StatelessWidget {
             pacote.status +
             "\n" +
             "postado em: " +
-            pacote.created_at),
+            pacote.createdAt),
       ),
     );
   }

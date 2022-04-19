@@ -2,18 +2,18 @@ class Pacote {
   final int id;
   final String content;
   final String status;
-  final int user_id;
-  final String created_at;
-  final String updated_at;
+  final int userId;
+  final String createdAt;
+  final String updatedAt;
 
 
   const Pacote({
     this.id = 0,
     required this.content,
     required this.status,
-    required this.user_id,
-    required this.created_at,
-    required this.updated_at
+    required this.userId,
+    required this.createdAt,
+    required this.updatedAt
   });
 
   factory Pacote.fromJson(Map<dynamic, dynamic> json) {
@@ -21,20 +21,20 @@ class Pacote {
       id: json['id'],
       content: json['content'],
       status: json['status'],
-      user_id: json['user_id'],
-      created_at: json['created_at'],
-      updated_at: json['updated_at']
+      userId: json['user_id'],
+      createdAt: json['created_at'],
+      updatedAt: json['updated_at']
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['content'] = this.content;
-    data['status'] = this.status;
-    data['user_id'] = this.user_id;
-    data['created_at'] = this.created_at;
-    data['updated_at'] = this.updated_at;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['content'] = content;
+    data['status'] = status;
+    data['user_id'] = userId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

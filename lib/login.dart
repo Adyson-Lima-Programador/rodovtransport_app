@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/servico_autenticacao/autenticacao_service.dart';
 import 'package:rodovtransport_app/routes.dart';
@@ -30,13 +29,13 @@ _login() {
     initialRoute: Routes.root,
     routes: {
       Routes.root: (context) => const LoginHome(),
-      Routes.pacotes_cliente: (context) => const PacotesCliente(),
-      Routes.pacotes_empresa: (context) => const PacotesEmpresa(),
-      Routes.pacotes_novo: (context) => const PacotesNovo(),
-      Routes.pacotes_atualizar: (context) => const PacotesAtualizar(),
-      Routes.usuarios_empresa: (context) => const UsuariosEmpresa(),
-      Routes.usuarios_novo: (context) => const UsuariosNovo(),
-      Routes.usuarios_atualizar: (context) => const UsuariosAtualizar()
+      Routes.pacotesCliente: (context) => const PacotesCliente(),
+      Routes.pacotesEmpresa: (context) => const PacotesEmpresa(),
+      Routes.pacotesNovo: (context) => const PacotesNovo(),
+      Routes.pacotesAtualizar: (context) => const PacotesAtualizar(),
+      Routes.usuariosEmpresa: (context) => const UsuariosEmpresa(),
+      Routes.usuariosNovo: (context) => const UsuariosNovo(),
+      Routes.usuariosAtualizar: (context) => const UsuariosAtualizar()
     },
   );
 }
@@ -152,7 +151,7 @@ class _LoginHomeState extends State<LoginHome> {
       Navigator.pushNamed(
         context,
         '/pacotes_cliente',
-        arguments: {autenticacaoService.email_usuario},
+        arguments: {autenticacaoService.emailUsuario},
       );
     }
   }
@@ -163,15 +162,15 @@ class _LoginHomeState extends State<LoginHome> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Atenção!"),
-            content: Text('Este aplicativo não se destina ao uso comercial. '
+            title: const Text("Atenção!"),
+            content: const Text('Este aplicativo não se destina ao uso comercial. '
                 'Ele é apenas uma demonstração de conhecimentos para portifólio.'
                 'E não deve ser adotado como solução.'
                 'Obrigado!'),
             actions: [
               ElevatedButton(
                   onPressed: () => {Navigator.pop(context, true)},
-                  child: Text("Entendi"),
+                  child: const Text("Entendi"),
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xffffbd59),
                     onPrimary: const Color(0xff424242),

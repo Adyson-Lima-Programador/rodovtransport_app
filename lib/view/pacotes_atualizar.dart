@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rodovtransport_app/model/pacotes_model.dart';
 import 'package:rodovtransport_app/model/servico_pacotes/pacotes_service.dart';
@@ -16,7 +15,7 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
   late int id;
   final content = TextEditingController();
   final status = TextEditingController();
-  final user_id = TextEditingController();
+  final userId = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -24,7 +23,7 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
     id = 0;
     content.dispose();
     status.dispose();
-    user_id.dispose();
+    userId.dispose();
     super.dispose();
   }
 
@@ -34,10 +33,10 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
     final pacote = ModalRoute.of(context)?.settings.arguments as Pacote;
 
     // preenche formulário com dados do pacote enviado no Navigator
-    this.id = pacote.id;
-    this.content.text = pacote.content;
-    this.status.text = pacote.status;
-    this.user_id.text = pacote.user_id.toString();
+    id = pacote.id;
+    content.text = pacote.content;
+    status.text = pacote.status;
+    userId.text = pacote.userId.toString();
 
     return Scaffold(
       appBar: AppBar(
@@ -62,6 +61,7 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                       if (content == null || content.isEmpty) {
                         return "Digite uma descrição";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -85,6 +85,7 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                       if (status == null || status.isEmpty) {
                         return "Digite um status";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -103,11 +104,12 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: TextFormField(
                     cursorColor: const Color(0xffffbd59),
-                    controller: user_id,
-                    validator: (user_id) {
-                      if (user_id == null || user_id.isEmpty) {
+                    controller: userId,
+                    validator: (userId) {
+                      if (userId == null || userId.isEmpty) {
                         return "Digite um número de usuário";
                       }
+                      return null;
                     },
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -136,9 +138,9 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
                         onPressed: () => {
                           if (_formKey.currentState!.validate())
                             {
-                              atualizar(this.id, content.text.trim(),
-                                  status.text.trim(), user_id.text.trim()),
-                              limpar_form(),
+                              atualizar(id, content.text.trim(),
+                                  status.text.trim(), userId.text.trim()),
+                              limparForm(),
                             }
                         },
                       ),
@@ -153,15 +155,15 @@ class _AtualizarPacoteState extends State<PacotesAtualizar> {
     );
   }
 
-  void atualizar(id, content, status, user_id) async {
+  void atualizar(id, content, status, userId) async {
     var pacotesService = PacotesService();
-    await pacotesService.atualizar(id, content, status, int.parse(user_id));
+    await pacotesService.atualizar(id, content, status, int.parse(userId));
   }
 
-  limpar_form() {
+  limparForm() {
     id = 0;
     content.text = '';
     status.text = '';
-    user_id.text = '';
+    userId.text = '';
   }
 }
