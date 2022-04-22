@@ -4,11 +4,8 @@
 #### - API REST em Ruby on Rails <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a>.
 #### - Aplicação web em Angular <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_web">rodovtransport_web</a>.
 
-## Autor
-
-Adyson Lima
-
-<a href="https://www.linkedin.com/in/adyson-lima-programador/">Meu LinkedIn</a>
+# Autor
+## Adyson Lima, <a href="https://www.linkedin.com/in/adyson-lima-programador/">Meu LinkedIn</a>.
  
 #### Solicite os dados para logar na aplicação pelo meu linkedin
 
