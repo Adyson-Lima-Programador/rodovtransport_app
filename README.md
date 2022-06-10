@@ -1,8 +1,4 @@
-## O sistema rodovtransport é uma solução fullstack completa para gerenciamento de cargas para transportadoras rodoviárias.
-### O sistema inclui: 
-#### - Aplicativo em Flutter <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_app">rodovtransport_app</a>.
-#### - API REST em Ruby on Rails <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_api">rodovtransport_api</a>.
-#### - Aplicação web em Angular <a href ="https://github.com/Adyson-Lima-Programador/rodovtransport_web">rodovtransport_web</a>.
+## Aplicativo Flutter parte do sistema rodovtransport para gerenciamento de cargas de transportadoras rodoviárias.
 
 # Autor
 ## Adyson Lima, <a href="https://www.linkedin.com/in/adyson-lima-programador/">Meu LinkedIn</a>.
@@ -12,23 +8,17 @@
 ## Aplicativo mobile Flutter
 <p><img src="https://github.com/Adyson-Lima-Programador/rodovtransport_app/blob/main/imagens/app_web.gif" width="350px"/></p>
 
-## Aplicação web Angular
-<img src="https://github.com/Adyson-Lima-Programador/rodovtransport_web/blob/main/src/app/imagens/app_web.gif"/>
-
-## Imagem da documentação da API
-<img src="https://github.com/Adyson-Lima-Programador/rodovtransport_api/blob/main/documentacao/imagem-doc-api.png" />
-
 ## Tecnologias utilizadas
-### Frameworks
-#### - Ruby on Rails
-#### - Angular
-#### - Flutter
-### Linguagens
-#### - Ruby
-#### - Typescript
-#### - Dart
-### Hospedagens
-#### - Heroku
-#### - Netlify
-### Banco de dados
-#### - Postgresql
+- Flutter
+- Dart
+
+# Como executar o projeto
+
+```bash
+# clonar repositório
+git clone https://github.com/Adyson-Lima-Programador/rodovtransport_app
+
+# entrar na pasta rodovtransport_app
+cd rodovtransport_app
+
+# executar o projeto no emulador do Android
